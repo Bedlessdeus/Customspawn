@@ -1,0 +1,4 @@
+name: Customspawn
+version: '${project.version}'
+main: com.bedless.spawnplugin.SpawnPlugin
+api-version: 1.18
