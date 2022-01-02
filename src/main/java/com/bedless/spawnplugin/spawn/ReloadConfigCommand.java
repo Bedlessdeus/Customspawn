@@ -13,13 +13,8 @@ import org.bukkit.entity.Player;
 public class ReloadConfigCommand extends BaseCommand {
 
     @Default
-    public void onCommand(Player p, String[] args) {
+    public void onCommand(Player p) {
         ConfigurationManager.getInstance().loadConfiguration();
-        //p.sendMessage(ChatColor.DARK_RED + "Attempting to restart Core");
-        //Bessential.getInstance().getPluginLoader().disablePlugin(Bessential.getInstance());
-        //p.sendMessage(ChatColor.RED + "Restarting Core");
-        //Bessential.getInstance().getPluginLoader().enablePlugin(Bessential.getInstance());
-        //p.sendMessage(ChatColor.GREEN + "Reloading Core");
         p.sendMessage(ChatColor.DARK_GREEN + "Reloaded configuration files!");
     }
 }

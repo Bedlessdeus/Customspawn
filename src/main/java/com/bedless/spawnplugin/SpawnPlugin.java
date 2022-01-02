@@ -3,9 +3,9 @@ package com.bedless.spawnplugin;
 import co.aikar.commands.PaperCommandManager;
 import com.bedless.spawnplugin.config.ConfigurationManager;
 import com.bedless.spawnplugin.spawn.BuildCommand;
+import com.bedless.spawnplugin.spawn.ReloadConfigCommand;
 import com.bedless.spawnplugin.spawn.SetSpawnCommand;
 import com.bedless.spawnplugin.spawn.SpawnCommand;
-import com.bedless.spawnplugin.spawn.ReloadConfigCommand;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -29,6 +29,7 @@ import static com.bedless.spawnplugin.spawn.BuildCommand.playersInBuildMode;
 
 public final class SpawnPlugin extends JavaPlugin implements Listener {
     private static SpawnPlugin INSTANCE;
+
     public static SpawnPlugin getInstance() {
         return INSTANCE;
     }
@@ -79,10 +80,11 @@ public final class SpawnPlugin extends JavaPlugin implements Listener {
             player.setHealth(20);
             player.setFoodLevel(20);
         }
-        if(ConfigurationManager.getInstance().getBoolean(CLEAR_INV_JOIN)) {
+        if (ConfigurationManager.getInstance().getBoolean(CLEAR_INV_JOIN)) {
             player.getInventory().clear();
         }
     }
+
     @EventHandler
     public void onPlayerDeathEvent(PlayerDeathEvent e) {
         Player player = e.getEntity();
@@ -110,7 +112,7 @@ public final class SpawnPlugin extends JavaPlugin implements Listener {
     @EventHandler
     public void onEntityDamageEvent(EntityDamageEvent e) {
         if (e.getEntity() instanceof Player) {
-            if(ConfigurationManager.getInstance().getBoolean(PLAYER_IMMUNITY)) {
+            if (ConfigurationManager.getInstance().getBoolean(PLAYER_IMMUNITY)) {
                 e.setCancelled(true);
             } else {
                 e.setCancelled(false);
@@ -120,19 +122,19 @@ public final class SpawnPlugin extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onPlayerInteractEvent(PlayerInteractEvent e) {
-        if(ConfigurationManager.getInstance().getBoolean(PLAYER_INTERACT)) {
+        if (ConfigurationManager.getInstance().getBoolean(PLAYER_INTERACT)) {
             e.setCancelled(false);
         } else {
             e.setCancelled(true);
         }
-        if(playersInBuildMode.contains(e.getPlayer())){
+        if (playersInBuildMode.contains(e.getPlayer())) {
             e.setCancelled(false);
         }
     }
 
     @EventHandler
     public void onFireTickEvent(BlockBurnEvent e) {
-        if(ConfigurationManager.getInstance().getBoolean(PLAYER_IMMUNITY)) {
+        if (ConfigurationManager.getInstance().getBoolean(PLAYER_IMMUNITY)) {
             e.setCancelled(true);
         } else {
             e.setCancelled(false);
@@ -141,7 +143,7 @@ public final class SpawnPlugin extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onTntExplodeEvent(ExplosionPrimeEvent e) {
-        if(ConfigurationManager.getInstance().getBoolean(PLAYER_IMMUNITY)) {
+        if (ConfigurationManager.getInstance().getBoolean(PLAYER_IMMUNITY)) {
             e.setCancelled(true);
         } else {
             e.setCancelled(false);
@@ -150,7 +152,7 @@ public final class SpawnPlugin extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onFoodLevelChange(FoodLevelChangeEvent e) {
-        if(ConfigurationManager.getInstance().getBoolean(PLAYER_HUNGER)) {
+        if (ConfigurationManager.getInstance().getBoolean(PLAYER_HUNGER)) {
             e.setCancelled(true);
         } else {
             e.setCancelled(false);
@@ -159,24 +161,24 @@ public final class SpawnPlugin extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onPlayerBreakEvent(BlockBreakEvent e) {
-        if(ConfigurationManager.getInstance().getBoolean(BREAK_BLOCKS)) {
+        if (ConfigurationManager.getInstance().getBoolean(BREAK_BLOCKS)) {
             e.setCancelled(false);
         } else {
             e.setCancelled(true);
         }
-        if(playersInBuildMode.contains(e.getPlayer())){
+        if (playersInBuildMode.contains(e.getPlayer())) {
             e.setCancelled(false);
         }
     }
 
     @EventHandler
     public void onPlayerPlaceEvent(BlockPlaceEvent e) {
-        if(ConfigurationManager.getInstance().getBoolean(PLACE_BLOCKS)) {
+        if (ConfigurationManager.getInstance().getBoolean(PLACE_BLOCKS)) {
             e.setCancelled(false);
         } else {
             e.setCancelled(true);
         }
-        if(playersInBuildMode.contains(e.getPlayer())){
+        if (playersInBuildMode.contains(e.getPlayer())) {
             e.setCancelled(false);
         }
     }

@@ -16,7 +16,7 @@ public class BuildCommand extends BaseCommand {
     public static ArrayList<Player> playersInBuildMode = new ArrayList<>();
 
     @Default
-    public void onCommand(Player p, String[] args) {
+    public void onCommand(Player p) {
         if (p.hasPermission("CalydonSpawn.buildmode")) {
             if (playersInBuildMode.contains(p)) {
                 playersInBuildMode.remove(p);

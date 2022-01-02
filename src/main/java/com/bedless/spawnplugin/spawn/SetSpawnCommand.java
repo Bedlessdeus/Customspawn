@@ -14,7 +14,7 @@ import org.bukkit.entity.Player;
 public class SetSpawnCommand extends BaseCommand {
 
     @Default
-    public void onCommand(Player p, String[] args) {
+    public void onCommand(Player p) {
         Location loc = p.getLocation();
         ConfigurationManager cm = ConfigurationManager.getInstance();
         cm.setOption(ConfigurationOption.SPAWN_WORLD, loc.getWorld().getName());

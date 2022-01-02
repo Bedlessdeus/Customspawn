@@ -13,7 +13,7 @@ import org.bukkit.entity.Player;
 public class SpawnCommand extends BaseCommand {
 
     @Default
-    public void onCommand(Player p, String[] args) {
+    public void onCommand(Player p) {
         ConfigurationManager.getInstance().sendToSpawn(p);
         p.sendMessage(ChatColor.GREEN + "You were Teleported to spawn!");
     }

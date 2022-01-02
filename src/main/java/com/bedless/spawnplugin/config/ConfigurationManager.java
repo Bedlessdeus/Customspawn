@@ -1,8 +1,6 @@
 package com.bedless.spawnplugin.config;
 
 import com.bedless.spawnplugin.SpawnPlugin;
-
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -29,13 +27,13 @@ public class ConfigurationManager {
     private ConfigurationManager() {
 
         /* Spawn Module */
-
+        configurationOptions.put(ConfigurationOption.SPAWN_WORLD, "world");
         configurationOptions.put(ConfigurationOption.SPAWN_X, 0d);
         configurationOptions.put(ConfigurationOption.SPAWN_Y, 0d);
         configurationOptions.put(ConfigurationOption.SPAWN_Z, 0d);
         configurationOptions.put(ConfigurationOption.SPAWN_YAW, 0f);
         configurationOptions.put(ConfigurationOption.SPAWN_PITCH, 0f);
-        configurationOptions.put(ConfigurationOption.SPAWN_WORLD, "world");
+
         configurationOptions.put(ConfigurationOption.CLEAR_INV_JOIN, true);
         configurationOptions.put(ConfigurationOption.TELEPORT_TO_SPAWN_JOIN, true);
         configurationOptions.put(ConfigurationOption.PLAYER_IMMUNITY, true);
@@ -47,10 +45,10 @@ public class ConfigurationManager {
         configurationOptions.put(ConfigurationOption.PLAYER_INTERACT, false);
         configurationOptions.put(ConfigurationOption.PLACE_BLOCKS, false);
         configurationOptions.put(ConfigurationOption.BREAK_BLOCKS, false);
-        if(!baseFolder.exists())
+        if (!baseFolder.exists())
             baseFolder.mkdirs();
 
-        if(!mainConfiguration.exists()) {
+        if (!mainConfiguration.exists()) {
             try {
                 /* Create new configuration file */
                 mainConfiguration.createNewFile();
@@ -70,16 +68,22 @@ public class ConfigurationManager {
 
     }
 
+    public static ConfigurationManager getInstance() {
+        if (instance == null)
+            instance = new ConfigurationManager();
+        return instance;
+    }
+
     public void loadConfiguration() {
         /* Config exists lets load values */
         YamlConfiguration yamlConfiguration = YamlConfiguration.loadConfiguration(mainConfiguration);
-
+        configurationOptions.replace(ConfigurationOption.SPAWN_WORLD, yamlConfiguration.getString(ConfigurationOption.SPAWN_WORLD));
         configurationOptions.replace(ConfigurationOption.SPAWN_X, yamlConfiguration.getDouble(ConfigurationOption.SPAWN_X));
         configurationOptions.replace(ConfigurationOption.SPAWN_Y, yamlConfiguration.getDouble(ConfigurationOption.SPAWN_Y));
         configurationOptions.replace(ConfigurationOption.SPAWN_Z, yamlConfiguration.getDouble(ConfigurationOption.SPAWN_Z));
         configurationOptions.replace(ConfigurationOption.SPAWN_YAW, (float) yamlConfiguration.getDouble(ConfigurationOption.SPAWN_YAW));
-        configurationOptions.replace(ConfigurationOption.SPAWN_PITCH, (float)  yamlConfiguration.getDouble(ConfigurationOption.SPAWN_PITCH));
-        configurationOptions.replace(ConfigurationOption.SPAWN_WORLD, yamlConfiguration.getString(ConfigurationOption.SPAWN_WORLD));
+        configurationOptions.replace(ConfigurationOption.SPAWN_PITCH, (float) yamlConfiguration.getDouble(ConfigurationOption.SPAWN_PITCH));
+
         configurationOptions.replace(ConfigurationOption.CLEAR_INV_JOIN, yamlConfiguration.getBoolean(ConfigurationOption.CLEAR_INV_JOIN));
         configurationOptions.replace(ConfigurationOption.PLAYER_IMMUNITY, yamlConfiguration.getBoolean(ConfigurationOption.PLAYER_IMMUNITY));
         configurationOptions.replace(ConfigurationOption.TELEPORT_TO_SPAWN_JOIN, yamlConfiguration.getBoolean(ConfigurationOption.TELEPORT_TO_SPAWN_JOIN));
@@ -105,7 +109,6 @@ public class ConfigurationManager {
         }
     }
 
-
     public void sendToSpawn(Player p) {
         p.teleport(new Location(Bukkit.getWorld((String) getOption(ConfigurationOption.SPAWN_WORLD)),
                 (double) getOption(ConfigurationOption.SPAWN_X),
@@ -115,15 +118,14 @@ public class ConfigurationManager {
                 (float) getOption(ConfigurationOption.SPAWN_PITCH)));
     }
 
-
-    public Object getOption(String opt) {
-        return configurationOptions.get(opt);
-    }
-
     /* Specific get functions are not type checked, if you call getInteger on a String it will result
         in an error and unpredictable behaviour. Always verify that the type of the ConfigurationOption
          used to retrieve an object matches the get functions.
     */
+
+    public Object getOption(String opt) {
+        return configurationOptions.get(opt);
+    }
 
     public int getInteger(String opt) {
         return (int) getOption(opt);
@@ -151,12 +153,6 @@ public class ConfigurationManager {
 
     public void setOption(String opt, Object obj) {
         configurationOptions.replace(opt, obj);
-    }
-
-    public static ConfigurationManager getInstance() {
-        if(instance == null)
-            instance = new ConfigurationManager();
-        return instance;
     }
 
 }
