@@ -47,6 +47,61 @@ public final class SpawnPlugin extends JavaPlugin implements Listener {
         Bukkit.getConsoleSender().sendMessage("Running on " + Bukkit.getBukkitVersion());
         Bukkit.getConsoleSender().sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Warning Multiverse and other Plugins may override this Plugin (Like sending People to spawn)");
         Bukkit.getConsoleSender().sendMessage(line1);
+        String version1 = Bukkit.getServer().getClass().getPackage().getName().replace(".", ",").split(",")[3].split("_")[1];
+        Bukkit.getConsoleSender().sendMessage("Version " + version1);
+        String sn = 7 + "";
+        String et = 8 + "";
+        String ne = 9 + "";
+        String tn = 10 + "";
+        String evn = 11 + "";
+        String twl = 12 + "";
+        String tte = 13 + "";
+        String ftn = 14 + "";
+        String fftn = 15 + "";
+        String sxtn = 16 + "";
+        String sntn = 17 + "";
+        String etn = 18 + "";
+        String nntn = 19 + "";
+
+        if(version1.equals(sn)){
+            Bukkit.getConsoleSender().sendMessage("Server is running on version 7");
+        }
+        if(version1.equals(et)){
+            Bukkit.getConsoleSender().sendMessage("Server is running on version 8");
+        }
+        if(version1.equals(ne)){
+            Bukkit.getConsoleSender().sendMessage("Server is running on version 9");
+        }
+        if(version1.equals(tn)){
+            Bukkit.getConsoleSender().sendMessage("Server is running on version 10");
+        }
+        if(version1.equals(evn)){
+            Bukkit.getConsoleSender().sendMessage("Server is running on version 12");
+        }
+        if(version1.equals(twl)){
+            Bukkit.getConsoleSender().sendMessage("Server is running on version 13");
+        }
+        if(version1.equals(tte)){
+            Bukkit.getConsoleSender().sendMessage("Server is running on version 14");
+        }
+        if(version1.equals(ftn)){
+            Bukkit.getConsoleSender().sendMessage("Server is running on version 15");
+        }
+        if(version1.equals(fftn)){
+            Bukkit.getConsoleSender().sendMessage("Server is running on version 16");
+        }
+        if(version1.equals(sxtn)){
+            Bukkit.getConsoleSender().sendMessage("Server is running on version 17");
+        }
+        if(version1.equals(sntn)){
+            Bukkit.getConsoleSender().sendMessage("Server is running on version 18");
+        }
+        if(version1.equals(etn)){
+            Bukkit.getConsoleSender().sendMessage("Server is running on version 19");
+        }
+        if(version1.equals(nntn)){
+            Bukkit.getConsoleSender().sendMessage("Server is running on version 20");
+        }
     }
 
     public void registerCommands() {
@@ -170,7 +225,6 @@ public final class SpawnPlugin extends JavaPlugin implements Listener {
             e.setCancelled(false);
         }
     }
-
     @EventHandler
     public void onPlayerPlaceEvent(BlockPlaceEvent e) {
         if (ConfigurationManager.getInstance().getBoolean(PLACE_BLOCKS)) {
