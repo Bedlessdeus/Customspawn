@@ -47,25 +47,15 @@ public final class SpawnPlugin extends JavaPlugin implements Listener {
             Bukkit.getConsoleSender().sendMessage(ChatColor.AQUA + "Custom Spawn Plugin");
             Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "" + ChatColor.BOLD + "Enabled");
             Bukkit.getConsoleSender().sendMessage("Running on " + Bukkit.getBukkitVersion());
-            Bukkit.getConsoleSender().sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Warning Multiverse and other Plugins may override this Plugin (Like sending People to spawn)");
             Bukkit.getConsoleSender().sendMessage(line1);
-        } else if(version1.equals(9-18)){
+        } else {
             String line1 = ChatColor.GREEN + "===================";
             Bukkit.getConsoleSender().sendMessage(line1);
             Bukkit.getConsoleSender().sendMessage(ChatColor.AQUA + "Custom Spawn Plugin");
             Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "" + ChatColor.BOLD + "Enabled");
             Bukkit.getConsoleSender().sendMessage("Running on " + Bukkit.getBukkitVersion());
-            Bukkit.getConsoleSender().sendMessage(ChatColor.DARK_RED + "This is an Unsupported Version! It  may not load correctly!");
-            Bukkit.getConsoleSender().sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Warning Multiverse and other Plugins may override this Plugin (Like sending People to spawn)");
-            Bukkit.getConsoleSender().sendMessage(line1);
-        }else if(version1.equals(7)){
-            String line1 = ChatColor.GREEN + "===================";
-            Bukkit.getConsoleSender().sendMessage(line1);
-            Bukkit.getConsoleSender().sendMessage(ChatColor.AQUA + "Custom Spawn Plugin");
-            Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "" + ChatColor.BOLD + "Enabled");
-            Bukkit.getConsoleSender().sendMessage("Running on " + Bukkit.getBukkitVersion());
-            Bukkit.getConsoleSender().sendMessage(ChatColor.DARK_RED + "This is an Unsupported Version! It  may not load correctly!");
-            Bukkit.getConsoleSender().sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Warning Multiverse and other Plugins may override this Plugin (Like sending People to spawn)");
+            Bukkit.getConsoleSender().sendMessage(ChatColor.DARK_RED + "This Plugin is not running on the intended Spigot Version!");
+            Bukkit.getConsoleSender().sendMessage(ChatColor.DARK_RED + "Plugin may not behave as expected!");
             Bukkit.getConsoleSender().sendMessage(line1);
         }
     }
@@ -85,7 +75,6 @@ public final class SpawnPlugin extends JavaPlugin implements Listener {
     @Override
     public void onDisable() {
         ConfigurationManager.getInstance().saveConfiguration();
-        Bukkit.getConsoleSender().sendMessage("Disabled");
         String line2 = ChatColor.RED + "===================";
         Bukkit.getConsoleSender().sendMessage(line2);
         Bukkit.getConsoleSender().sendMessage(ChatColor.AQUA + "Custom Spawn Plugin");
