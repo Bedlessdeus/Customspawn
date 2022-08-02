@@ -1,7 +1,10 @@
-package com.bedless.spawnplugin.eventhandler;
+package com.bedless.spawnplugin.events;
 
-public class EventHandler implements EventHandler{
-@EventHandler
+import org.bukkit.event.Listener;
+
+public class MainEventHandler implements Listener {
+    /*
+@MainEventHandler
     public void onPlayerJoinEvent(PlayerJoinEvent e) {
         Player player = e.getPlayer();
         if (ConfigurationManager.getInstance().getBoolean(TELEPORT_TO_SPAWN_JOIN)) {
@@ -14,7 +17,7 @@ public class EventHandler implements EventHandler{
         }
     }
 
-    @EventHandler
+    @MainEventHandler
     public void onPlayerDeathEvent(PlayerDeathEvent e) {
         Player player = e.getEntity();
         if (ConfigurationManager.getInstance().getBoolean(SEND_TO_SPAWN_DEATH)) {
@@ -27,18 +30,18 @@ public class EventHandler implements EventHandler{
         }
     }
 
-    @EventHandler
+    @MainEventHandler
     public void onQuit(PlayerQuitEvent e) {
         //Removes player off of Build List on Logout 
         playersInBuildMode.remove(e.getPlayer());
     }
 
-    @EventHandler
+    @MainEventHandler
     public void onWeatherChange(WeatherChangeEvent e) {
         //e.setCancelled(true);
     }
 
-    @EventHandler
+    @MainEventHandler
     public void onEntityDamageEvent(EntityDamageEvent e) {
         if (e.getEntity() instanceof Player) {
             if (ConfigurationManager.getInstance().getBoolean(PLAYER_IMMUNITY)) {
@@ -49,7 +52,7 @@ public class EventHandler implements EventHandler{
         }
     }
 
-    @EventHandler
+    @MainEventHandler
     public void onPlayerInteractEvent(PlayerInteractEvent e) {
         if (ConfigurationManager.getInstance().getBoolean(PLAYER_INTERACT)) {
             e.setCancelled(false);
@@ -61,7 +64,7 @@ public class EventHandler implements EventHandler{
         }
     }
 
-    @EventHandler
+    @MainEventHandler
     public void onFireTickEvent(BlockBurnEvent e) {
         if (ConfigurationManager.getInstance().getBoolean(PLAYER_IMMUNITY)) {
             e.setCancelled(true);
@@ -70,7 +73,7 @@ public class EventHandler implements EventHandler{
         }
     }
 
-    @EventHandler
+    @MainEventHandler
     public void onTntExplodeEvent(ExplosionPrimeEvent e) {
         if (ConfigurationManager.getInstance().getBoolean(PLAYER_IMMUNITY)) {
             e.setCancelled(true);
@@ -79,7 +82,7 @@ public class EventHandler implements EventHandler{
         }
     }
 
-    @EventHandler
+    @MainEventHandler
     public void onFoodLevelChange(FoodLevelChangeEvent e) {
         if (ConfigurationManager.getInstance().getBoolean(PLAYER_HUNGER)) {
             e.setCancelled(true);
@@ -88,7 +91,7 @@ public class EventHandler implements EventHandler{
         }
     }
 
-    @EventHandler
+    @MainEventHandler
     public void onPlayerBreakEvent(BlockBreakEvent e) {
         if (ConfigurationManager.getInstance().getBoolean(BREAK_BLOCKS)) {
             e.setCancelled(false);
@@ -99,7 +102,7 @@ public class EventHandler implements EventHandler{
             e.setCancelled(false);
         }
     }
-    @EventHandler
+    @MainEventHandler
     public void onPlayerPlaceEvent(BlockPlaceEvent e) {
         if (ConfigurationManager.getInstance().getBoolean(PLACE_BLOCKS)) {
             e.setCancelled(false);
@@ -110,5 +113,7 @@ public class EventHandler implements EventHandler{
             e.setCancelled(false);
         }
     }
+
+     */
 
 }
